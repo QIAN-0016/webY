@@ -1,0 +1,84 @@
+html, body {
+	margin: 0;
+	padding: 0;	
+}
+#images a {
+	margin-right: 14px;
+}
+
+#images a img {
+	border: 1px solid #888;	
+	padding: 3px;
+	vertical-align: top;
+}
+#imgbox-loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url('imgbox-spinner.gif') center center no-repeat;
+	cursor: pointer;
+	display: none;
+	z-index: 90;
+}
+
+#imgbox-loading div {
+	background: #FFF;
+	width: 100%;
+	height : 100%;
+}
+
+#imgbox-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	display: none;
+	z-index: 80;
+}
+
+.imgbox-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #FFF;
+	display: none;
+	z-index: 90;
+}
+
+.imgbox-img {
+	padding: 0;
+	margin: 0;
+	border: none;
+	width: 100%;
+	height: 100%;
+	vertical-align: top;
+}
+
+.imgbox-close {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	height: 30px;
+	width: 30px;
+	background: url('imgbox-close.png') top left no-repeat;
+	cursor: pointer;
+	outline: none;
+}
+
+.imgbox-title {
+	padding-top: 10px;
+	font-size: 11px;
+	text-align: center;
+	font-family: Arial;
+	color: #333;
+	display: none;
+}
+
+.imgbox-bg-wrap {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	display: none;
+}

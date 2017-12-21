@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>二维饼形图</title>
+</head>
+<body>
+
+<canvas id="canvas" width="500" height="500"></canvas>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="https://www.zcmlc.com/static/js/excanvas.js"></script>
+<![endif]-->
+<script type="text/javascript">
+	var data = [
+		{
+			amount:[500,200,300],//定期示产生收益、定期待收收益、定期已收收益
+			color:['#EE3255','#FF7992','#FFACBC'],
+			title:'定期收益'
+		},
+		{
+			amount:[300,300,600],//周薪持未产生收益、周薪持待收收益、周薪持已收收益
+			color:['#016DFF','#01A2FF','#65D5FF'],
+			title:'周薪持'
+		},
+		{
+			amount:[400],//喵钱包
+			color:['#FEE199'],
+			title:'喵钱包'
+		}
+	];
+
+	/* 二维饼形图 */
+	function pieChart(data){
+		var total = 0;//总值
+		var part = [];//区块总值数组
+		var len = data.length;
+		for(var i=0; i<len; i++){
+			var n = 0;
+			var amount = data[i].amount;
+			for(var j=0; j<amount.length; j++){
+				n += amount[j];
+			}
+			part.push(n);
+			total += n;
+		}
+
+		var c = document.getElementById("canvas");
+		var ctx = c.getContext('2d');
+		var x = y = c.clientWidth / 2;//圆心横纵坐标
+		var radius = 125;//半径
+		var p1 = p2 = 0;//扇形区起始角度与结束角度
+		var initAngle = 1;//初始角度
+		for(var i=0; i<data.length; i++){
+			if(part[i]>0){
+				var amount = data[i].amount;
+				var color = data[i].color;
+				var d = 0;
+				// p1 += i==0 ? 0 : part[i-1]/total*2;
+				// p2 += part[i]/total*2;
+				p1 += i==0 ? initAngle : part[i-1]/total*2;
+				p2 += i==0 ? (initAngle + part[i]/total*2) : part[i]/total*2;
+				for(var j=0; j<amount.length; j++){
+					//扇形
+					ctx.fillStyle=color[j];
+					ctx.beginPath();
+					ctx.moveTo(x,y);
+					d += j==0 ? 0 : radius*amount[j-1]/part[i];
+					var r = radius - d;
+					ctx.arc(x,y,r,p1*Math.PI,p2*Math.PI);
+					ctx.lineTo(x,y);
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//弧线
+				var arcRadius = radius + 16 * (i + 1);
+				ctx.beginPath();
+				ctx.strokeStyle = color[0];
+				ctx.arc(x,y,arcRadius,p1*Math.PI,p2*Math.PI);
+				ctx.lineTo(x,y);
+				ctx.stroke();
+
+				//绘制文字
+				var radian = p1 + part[i]/total*2/2;
+				lineX = x + (arcRadius + 20) * Math.cos(radian*Math.PI);
+	            lineY = y + (arcRadius + 20) * Math.sin(radian*Math.PI);
+	            if (radian%2 >= 0.5 && radian%2 <= 1.5){
+	                ctx.textAlign = 'right';
+	            }else {
+	                ctx.textAlign = 'left';
+	            }
+				ctx.fillStyle = '#000';
+				ctx.font = '14px "Hiragino Sans GB","Microsoft Yahei",宋体,Arial,Helvetica,sans-serif';
+				ctx.fillText(data[i].title, lineX, lineY);
+				console.log("x: "+lineX+"        y: "+lineY);
+			}
+		}
+	}
+
+	pieChart(data);
+</script>
+</body>
+</html>

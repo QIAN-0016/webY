@@ -1,0 +1,92 @@
+html {color: #000;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;font-size: 100px; background:#fff;}
+@media screen and (max-width:319px) {
+	html{font-size:38px;}
+}
+@media screen and (min-width:320px) and (max-width:359px) {
+    html{font-size:50px;}
+}
+@media screen and (min-width:360px) and (max-width:374px) {
+    html{font-size:56px;}
+}
+@media screen and (min-width:375px) and (max-width:409px) {
+    html{font-size:58px;}
+}
+@media screen and (min-width:410px) and (max-width:479px) {
+    html{font-size:64px;}
+}
+@media screen and (min-width:480px) and (max-width:559px) {
+    html{font-size:75px;}
+}
+@media screen and (min-width:560px) and (max-width:639px) {
+    html{font-size:86px;}
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {margin: 0;padding: 0;}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;font-family:'微软雅黑','宋体', Tahoma, 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;}
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {display: inline-block;*display: inline;*zoom: 1;}
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea {font: 12px/1.5 '微软雅黑','宋体', Tahoma, 'Microsoft YaHei', Verdana, Arial, Helvetica, sans-serif;outline:none;}
+input, select, textarea {font-size: 100%;}
+/* 去掉各Table  cell 的边距并让其边重合 */
+table {border-spacing: 0;}
+/* IE bug fixed: th 不继承 text-align*/
+th {text-align: inherit;}
+/* 去除默认边框 */
+fieldset, img {border: 0;}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {display: block;}
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {border: 0;font-variant: normal;}
+/* 一致的 del 样式 */
+del {text-decoration: line-through;}
+address, caption, cite, code, dfn, em, th, var {font-style: normal;font-weight: 500;}
+/* 去掉列表前的标识, li 会继承 */
+ol, ul {list-style: none;}
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption, th {text-align: left;}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight: 500;}
+q:before, q:after {content: '';}
+/* 统一上标和下标 */
+sub, sup {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+/* 让链接在 hover 状态下显示下划线 */
+a:hover {text-decoration:none;cursor:pointer;}
+/* 默认不显示下划线，保持页面简洁 */
+ins, a {text-decoration: none;outline:none;}
+a img {border:0;}
+i{font-style:normal;}
+
+/* 清理浮动 */
+.fn-clear:after {visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.fn-clear {zoom: 1;clear:both;height:0;}
+/* clear float */
+.clearfix { *zoom:1 }
+.clearfix:after { visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
+.ellipsis {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+/*去除ios浏览器中input button的风格*/
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance:none;
+    outline:none
+}
+/*移除html5 input="number"的小箭头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+input[type="number"]{-moz-appearance:textfield;}
+input::-webkit-input-placeholder{color:#fff;}
+input::-moz-placeholder{color:#fff;}
+
+/*弹框*/
+.dialog_popup .mask{width:100%;height:100%;position:fixed;left:0;top:0;z-index:100;background-color:#000;opacity:0.5;filter:alpha(opacity=50);}
+.dialog_popup .box{width:80%;background-color:#fff;border-radius:10px;position:fixed;left:10%;top:30%;z-index:105;padding:20px 0;}
+.dialog_popup span{position:absolute;top:2px;right:2px;width:34px;height:34px;font-size:34px;line-height:34px;text-align:center;color:#b5b5b5;border-radius:20px;z-index:1;cursor:pointer; font-family:arial;}
+.dialog_popup .title{padding:5px 0;color:#000;font-size:18px;text-align:center;position:relative;}
+.dialog_popup .cont{color:#a30913;text-align:center;padding:6px 10px 16px;position:relative; font-size:14px; font-weight:bold;}
+.dialog_popup .btnBox{text-align:center;position:relative;}
+.dialog_popup .okBtn,.dialog_popup .cancelBtn{background-color:#a30913;text-align:center;color:#fff;padding:5px 28px;display:inline-block;border-radius:6px;margin:0 5px; font-weight:bold; font-size:14px;}
+.dialog_popup .cancelBtn{background-color:#a7a7a7;}

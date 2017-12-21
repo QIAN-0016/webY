@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="JS代码,{keyword},JS广告代码,JS特效代码" />
+<meta name="description" content="此代码内容为{title}，属于站长常用代码，更多{keyword}代码请访问懒人图库JS代码频道。" />
+<title>{title}_懒人图库</title>
+<link rel="stylesheet" href="css/lrtk.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.imgbox.pack.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#example1-1").imgbox();
+
+			$("#example1-2").imgbox({
+			    'zoomOpacity'	: true,
+				'alignment'		: 'center'
+			});
+
+			$("#example1-3").imgbox({
+				'speedIn'		: 0,
+				'speedOut'		: 0
+			});
+
+			$("#example2-1, #example2-2").imgbox({
+				'speedIn'		: 0,
+				'speedOut'		: 0,
+				'alignment'		: 'center',
+				'overlayShow'	: true,
+				'allowMultiple'	: false
+			});
+		});
+	</script>
+</head>
+<body>
+<!-- 代码 开始 -->
+<div id="content">
+		<h1>imgBox</h1>
+		<hr />
+		<div id="images">
+		
+			<a id="example1-1" title="" href="images/4006876523_289a8296ee.jpg"><img alt="" src="images/4006876523_289a8296ee_m.jpg" /></a>
+			<a id="example1-2" title="Lorem ipsum dolor sit amet" href="images/photo_unavailable.gif"><img alt="" src="images/photo_unavailable_m.gif" /></a>
+			<a id="example1-3" title="Maecenas eros massa, pulvinar et sagittis adipiscing, &lt;br /&gt; molestie et arcu" href="images/4003912116_389c3891cf.jpg"><img alt="" src="images/4003912116_389c3891cf_m.jpg" /></a>
+			
+			<a id="example2-1" title="" href="images/3793633187_44790d1f0a_o.jpg"><img alt="" src="images/3793633187_f56bb1bf99_m.jpg" /></a>
+			<a id="example2-2" title="Maecenas eros massa, pulvinar et sagittis adipiscing, molestie et arcu" href="images/3793633099_3e1e53e4ac_o.jpg"><img alt="" src="images/3793633099_4f9c3e08b3_m.jpg" /></a>
+
+		</div>
+		
+		<div id="credit"></div>
+	</div>
+</body>
+</html>

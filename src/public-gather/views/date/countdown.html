@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>countdown html</title>
+<style>
+</style>
+</head>
+
+<body>
+<div class="bid_detail_presell">
+     倒计时 <span id="tH">00</span>时<span id="tM">00</span>分<span id="tS">00</span>秒
+ </div>
+ <input type="hidden" value="2017/12/20 17:30:00" id="preTime">
+
+ <script src="../../static/js/jquery.js"></script>
+ <script>
+function cNum(n){
+    return n<10?'0'+n:n;
+}
+if($("#preTime").length>0){
+    var endtimes = $("#preTime").val();//开始时间
+    var nowtimes = Number(new Date("2017/12/16 00:00:00"));//当前时间,日期格式2016/09/10 17:01:46
+    var countTimer = null;
+    function countdown(){
+        nowtimes = Number(nowtimes) + 1000;
+        var theDay = new Date(endtimes);
+        theDay = theDay++;
+        if(theDay <= nowtimes){
+            $("#tH,#tM,#tS").text("00");
+        }else{
+            timechange(theDay);    
+        }
+        countTimer = window.setTimeout("countdown()",1000)
+    }
+    function timechange(theDay){
+        var theDays=new Date(theDay);
+        var seconds = (theDays - nowtimes)/1000;
+        var minutes = Math.floor(seconds/60);
+        var hours = Math.floor(minutes/60);
+        var CHour= hours;
+        var CMinute= minutes % 60;
+        var CSecond= parseInt(seconds % 60);
+        $("#tH").text(cNum(CHour));
+        $("#tM").text(cNum(CMinute));
+        $("#tS").text(cNum(CSecond));
+    }
+    countdown();
+}
+</script>
+</body>
+</html>

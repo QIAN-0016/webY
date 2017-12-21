@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>按月还息,到期还本</title>
+<style>
+ul,li,p{margin:0;}
+.submit{cursor:pointer;}
+table{width:500px;text-align: center;}
+td{border:solid 1px #333;}
+</style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <td>回款日</td>
+            <td>期数</td>
+            <td>回款金额/元</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2016/09/30</td>
+            <td>1/12</td>
+            <td>92.00</td>
+        </tr>
+    </tbody>
+</table>
+<script src="../../static/js/jquery.js"></script>
+<script>
+Number.prototype.subNum = function(n){//小数点后n位截断
+    var f_x = parseFloat(this);
+    if (isNaN(f_x)){
+        return false;
+    }
+    f_x = Math.floor(f_x*Math.pow(10,n)+0.0001)/Math.pow(10,n); 
+    var s_x = f_x.toString();
+    var pos_decimal = s_x.indexOf('.');
+    if (pos_decimal < 0){
+        pos_decimal = s_x.length;
+        s_x += '.';
+    }
+    while (s_x.length <= pos_decimal + n){
+        s_x += '0';
+    }
+    return s_x;
+}
+//按月付息，到期还本
+var anticipated = {
+    nDate:'',//当前时间
+    nYear:'',//当前年
+    nMonth:'',//当前月 0~11
+    nDay:'',//当前日
+    months:[31,28,31,30,31,30,31,31,30,31,30,31],//当前月份日期
+    rate:0,//年化
+    investMoney:0,//投资金额
+    deadline:0,//期限
+    dailyIncome:0,//日收益
+    totalIncome:0,//总收益
+    nDateArr:[],//回款日
+    eDaysArr:[],//月回款天数
+    eIncomeArr:[],//月收益
+    lastIncome:0,//最后一次回款收益
+    init:function(){//初始化
+        //时间
+        this.nYear = this.nDate.getFullYear();
+        this.nMonth = this.nDate.getMonth();
+        this.nDay = this.nDate.getDate();
+        //标的
+        this.rate = 0.1;
+        this.investMoney = 10000;
+        this.deadline = 740;
+
+        this.earningsDays(this.deadline,this.nYear,this.nMonth);
+        this.listFun();
+    },
+    isLeap:function(year) {//计算2月的天数
+        return (year%100==0?res=(year%400==0?1:0):res=(year%4==0?1:0));
+    },
+    monthNum:function(m){//月份返回两个字符
+        return (m>=10?m:'0'+m)
+    },
+    earnings:function(){//计算预期收益
+        //日收益
+        this.dailyIncome = (this.rate*this.investMoney/365).subNum(3);
+        //总收益
+        this.totalIncome = (this.dailyIncome*this.deadline).subNum(2);
+        //计算最后一次收益+本金
+        var sloaner = parseFloat(0.00);
+        var sLen = this.nDateArr.length-1;
+        for(var i=0;i<sLen;i++){
+            sloaner = parseFloat(sloaner) + parseFloat((this.eDaysArr[i]*this.dailyIncome).subNum(3));
+        }
+        this.lastIncome = (this.investMoney + (this.totalIncome - sloaner.subNum(2))).subNum(2);
+    },
+    earningsDays:function(dle,eYear,eMonth){//计算月收益天数 dle:剩余投资期限
+        var eDays = 0;//月收益天数
+        var nextMonth = eMonth==11?0:eMonth+1; //判断月份是否为12月
+        var nDateYear = eMonth==11?eYear+1:eYear;
+        this.months[1] = 28+this.isLeap(nDateYear);
+
+
+        //剩余投资期限是否还能到下一个回款日
+        if(dle>this.months[eMonth]){
+            //下个月的还款日 > 下个月的实际天数   主要判断特殊日期：29/30/31
+            if(this.nDay>this.months[nextMonth]){
+                //月收益天数 = 下个月的实际天数
+                eDays = this.months[nextMonth];
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.months[nextMonth]);
+            }else{
+                //月收益天数 = 这个月的实际天数
+                eDays = this.months[eMonth];
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.nDay);
+            }
+            this.eDaysArr.push(eDays);
+            //是否还有下一次回款
+            if(dle>eDays){
+                //判断下一次回款是否到下一个月
+                if(dle-eDays>this.months[eMonth]-this.nDay){
+                    this.earningsDays(dle-eDays,nDateYear,nextMonth);
+                }else{
+                    this.earningsDays(dle-eDays,nDateYear,eMonth);
+                }
+            }else{
+                // var nnnn=0;
+                // for(var i=0;i<this.eDaysArr.length;i++){
+                //     nnnn += this.eDaysArr[i];
+                // }
+                // console.log("总天数:"+nnnn);
+                // console.log("月回款天数"+this.eDaysArr);
+                // console.log("回款日"+this.nDateArr);
+                return false;
+            }
+        }else{
+            //是否当月还本还息
+            if(dle<=this.months[eMonth]-this.nDay){
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+(dle+this.nDay));
+            }else{
+                //回款日 = 当月实际天数 - 回款日 + 剩余期限
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+(dle+this.nDay-this.months[eMonth]));
+            }
+            eDays = dle;
+            this.eDaysArr.push(eDays);
+
+            // var nnnn=0;
+            // for(var i=0;i<this.eDaysArr.length;i++){
+            //     nnnn += this.eDaysArr[i];
+            // }
+            // console.log("总天数:"+nnnn);
+            // console.log("月回款天数"+this.eDaysArr);
+            // console.log("回款日"+this.nDateArr);
+            return false;
+        }
+    },
+    listFun:function(){ //遍历列表
+        this.earnings();
+        var sLen = this.nDateArr.length;
+        var str = "";
+        for(var i=0;i<sLen;i++){
+            if(i==sLen-1){
+                str += '<tr><td>'+this.nDateArr[i]+'</td><td>'+(i+1)+'/'+sLen+'</td><td>'+this.lastIncome+'</td></tr>';
+            }else{
+                str += '<tr><td>'+this.nDateArr[i]+'</td><td>'+(i+1)+'/'+sLen+'</td><td>'+(this.eDaysArr[i]*this.dailyIncome).subNum(2)+'</td></tr>';
+            }
+        }
+        $("tbody").html(str);
+    }
+}
+anticipated.nDate=new Date('2018/9/30');
+anticipated.init();
+</script>
+</body>
+</html>

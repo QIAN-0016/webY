@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>dialog html</title>
+<style>
+/*弹框*/
+.dialog_popup .mask{width:100%;height:100%;position:fixed;left:0;top:0;z-index:100;background-color:#000;opacity:0.5;filter:alpha(opacity=50);}
+.dialog_popup .box{width:80%;background-color:#fff;border-radius:10px;position:fixed;left:10%;top:30%;z-index:105;padding:20px 0;}
+.dialog_popup span{position:absolute;top:2px;right:2px;width:34px;height:34px;font-size:34px;line-height:34px;text-align:center;/*background:rgba(0,0,0,0.5);*/color:#b5b5b5;border-radius:20px;z-index:1;cursor:pointer; font-family:arial;}
+.dialog_popup .title{padding:5px 0;color:#000;font-size:18px;text-align:center;position:relative;}
+.dialog_popup .cont{color:#a30913;text-align:center;padding:6px 10px 16px;position:relative; font-size:14px; font-weight:bold;}
+.dialog_popup .btnBox{text-align:center;position:relative;}
+.dialog_popup .okBtn,.dialog_popup .cancelBtn{background-color:#a30913;text-align:center;color:#fff;padding:5px 28px;display:inline-block;border-radius:6px;margin:0 5px; font-weight:bold; font-size:14px;}
+.dialog_popup .cancelBtn{background-color:#a7a7a7;}
+</style>
+</head>
+
+<body>
+<script src="../../static/js/jquery.js"></script>
+<script>
+var addEvent = function(obj, sEv, fn){
+   if(document.addEventListener){
+      obj.addEventListener(sEv, fn, false);
+   }else{
+      obj.attachEvent('on'+sEv, fn);
+   }
+}
+//自定义弹出层
+var dialog = function(params){
+   var title = params.title || "", //dialog标题
+         desc = params.desc, //dialog内容
+         eventType = params.eventType || "click", //绑定动作
+         ok = params.ok || true, //是否显示确定按钮
+         cancel = params.cancel || false, //是否显示取消按钮
+         okVal = params.okVal || "确定",  //确定按钮显示文字
+         okFun = params.okFun || function(){}, //确定回调函数
+         cancelVal = params.cancelVal || "取消", //取消按钮显示文字
+         cancelFun = params.cancelFun || function(){}, //取消回调函数
+         closeFun = params.closeFun || function(){}; //关闭回调函数
+
+   var okBtn = ok ? '<a class="okBtn" href="javascript:void(0);">' + okVal + '</a>' : '',
+         cancelBtn = cancel ? '<a class="cancelBtn" href="javascript:void(0);">' + cancelVal + '</a>' : '';
+
+   var innerTag = '<div class="dialog_popup">'+
+         '<div class="mask"></div>'+
+         '<div class="box">'+
+         '<span>&times;</span>'+
+         '<h1 class="title">' + title + '</h1>'+
+         '<p class="cont">'+ desc + '</p>'+
+         '<div class="btnBox">'+ cancelBtn + okBtn +'</div>'+
+         '</div>'+
+         '</div>';
+
+   var parentNode = document.getElementsByTagName("body")[0];
+   var wrapEle = null;
+
+   wrapEle = document.createElement("div");
+   wrapEle.style.display="block";
+   wrapEle.innerHTML = innerTag;
+
+   var curObj = parentNode.appendChild(wrapEle);
+   var objnum=1;
+   if(cancel){objnum=2;};
+   addEvent(curObj.getElementsByTagName("span")[0],eventType,function(){
+      if(curObj){
+         curObj.parentNode.removeChild(curObj);
+      };
+      closeFun();
+   },false);
+   if(ok){
+      addEvent(curObj.getElementsByTagName("a")[objnum-1],eventType,function(){
+         if(curObj){
+            curObj.parentNode.removeChild(curObj);
+         };
+         okFun();
+      },false);
+   }
+   if(cancel){
+      addEvent(curObj.getElementsByTagName("a")[objnum-2],eventType,function(){
+         if(curObj){
+            curObj.parentNode.removeChild(curObj);
+         };
+         cancelFun();
+      },false);
+   }
+};
+$(function(){
+      // 调用自定义弹出层
+      dialog({
+            desc:"container",
+            okFun:function(){
+            console.log("ok");
+            },
+            cancelFun:function(){
+            console.log("cancel");
+            }
+      });
+})
+</script>
+</body>
+</html>
