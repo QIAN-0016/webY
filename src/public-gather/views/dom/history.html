@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>history</title>
+<style>
+	p{padding:0;margin:0;}
+	a{margin-right:6px;}
+</style>
+</head>
+<body>
+<h1>history</h1>
+<p><a href="javascript:;" onclick="ochash()">hash</a>返回一个URL的锚部分</p>
+<p><a href="javascript:;" onclick="ochost()">host</a>返回一个URL的主机名和端口</p>
+<p><a href="javascript:;" onclick="ochostname()">hostname</a>返回URL的主机名</p>
+<p><a href="javascript:;" onclick="ochref()">href</a>返回完整的URL</p>
+<p><a href="javascript:;" onclick="ocpathname()">pathname</a>返回的URL路径名。</p>
+<p><a href="javascript:;" onclick="ocport()">port</a>返回一个URL服务器使用的端口号</p>
+<p><a href="javascript:;" onclick="ocprotocol()">protocol</a>返回一个URL协议</p>
+<p><a href="javascript:;" onclick="ocsearch()">search</a>返回一个URL的查询部分</p>
+
+<div id="msg"></div>
+<script>
+
+function ochash(){
+	document.getElementById("msg").innerHTML = location.hash;
+}
+function ochost(){
+	document.getElementById("msg").innerHTML = location.host;
+}
+function ochostname(){
+	document.getElementById("msg").innerHTML = location.hostname;
+}
+function ochref(){
+	document.getElementById("msg").innerHTML = location.href;
+}
+function ocpathname(){
+	document.getElementById("msg").innerHTML = location.pathname;
+}
+function ocport(){
+	document.getElementById("msg").innerHTML = location.port;
+}
+function ocprotocol(){
+	document.getElementById("msg").innerHTML = location.protocol;
+}
+function ocsearch(){
+	document.getElementById("msg").innerHTML = location.search;
+}
+
+</script>
+</body>
+</html>
