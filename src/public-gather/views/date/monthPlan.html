@@ -70,7 +70,7 @@ var anticipated = {
         //标的
         this.rate = 0.1;
         this.investMoney = 10000;
-        this.deadline = 740;
+        this.deadline = 98;
 
         this.earningsDays(this.deadline,this.nYear,this.nMonth);
         this.listFun();
@@ -100,18 +100,24 @@ var anticipated = {
         var nDateYear = eMonth==11?eYear+1:eYear;
         this.months[1] = 28+this.isLeap(nDateYear);
 
-
+        
         //剩余投资期限是否还能到下一个回款日
         if(dle>this.months[eMonth]){
             //下个月的还款日 > 下个月的实际天数   主要判断特殊日期：29/30/31
-            if(this.nDay>this.months[nextMonth]){
-                //月收益天数 = 下个月的实际天数
-                eDays = this.months[nextMonth];
-                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.months[nextMonth]);
+            if(this.nDay > this.months[nextMonth]){
+                //月收益天数 = 下个月的实际天数 + 这个月实际天数 - 还款日
+                eDays = this.months[nextMonth] + this.months[eMonth] - this.nDay;
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.monthNum(this.months[nextMonth]));
             }else{
-                //月收益天数 = 这个月的实际天数
-                eDays = this.months[eMonth];
-                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.nDay);
+                // 还款日 >= 这个月的实际天数
+                if(this.nDay >= this.months[eMonth]){
+                    //月收益天数 = 还款日 
+                    eDays =  this.nDay;
+                }else{
+                    //月收益天数 = 这个月的实际天数
+                    eDays =  this.months[eMonth];
+                }
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.monthNum(this.nDay));
             }
             this.eDaysArr.push(eDays);
             //是否还有下一次回款
@@ -135,10 +141,10 @@ var anticipated = {
         }else{
             //是否当月还本还息
             if(dle<=this.months[eMonth]-this.nDay){
-                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+(dle+this.nDay));
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.monthNum(dle+this.nDay));
             }else{
                 //回款日 = 当月实际天数 - 回款日 + 剩余期限
-                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+(dle+this.nDay-this.months[eMonth]));
+                this.nDateArr.push(nDateYear+"/"+this.monthNum(nextMonth+1)+"/"+this.monthNum(dle+this.nDay-this.months[eMonth]));
             }
             eDays = dle;
             this.eDaysArr.push(eDays);
@@ -152,6 +158,8 @@ var anticipated = {
             // console.log("回款日"+this.nDateArr);
             return false;
         }
+            console.log(this.eDaysArr);
+        
     },
     listFun:function(){ //遍历列表
         this.earnings();
@@ -164,10 +172,10 @@ var anticipated = {
                 str += '<tr><td>'+this.nDateArr[i]+'</td><td>'+(i+1)+'/'+sLen+'</td><td>'+(this.eDaysArr[i]*this.dailyIncome).subNum(2)+'</td></tr>';
             }
         }
-        $("tbody").html(str);
+        $("tbody").html(str); 
     }
 }
-anticipated.nDate=new Date('2018/9/30');
+anticipated.nDate=new Date('2018/1/6');
 anticipated.init();
 </script>
 </body>
