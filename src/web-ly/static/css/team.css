@@ -1,0 +1,28 @@
+.container{margin-bottom: 1.2rem;}
+.pro_nav{background-color: #fff;text-align: center;border-bottom: 0.02rem solid #e5e1e1;margin-bottom: 0.22rem;overflow:hidden;}
+.pro_nav ul{width: 90.63%;margin: 0.2rem auto 0.08rem;overflow: hidden;}
+.pro_nav li{width: 33.33%;float: left;margin-bottom: 0.1rem;}
+.pro_nav p{width: 94.83%;margin: 0 auto;height: 0.65rem;line-height: 0.65rem;font-size: 0.26rem;color: #3a3a3a;box-sizing: border-box;letter-spacing: 0.03rem;background-color: #eee;}
+.pro_nav p.chose{background-color: #053a95;color: #fff;}
+.pro_wrap{background-color: #fff;overflow:hidden;text-align: center;width: 96.88%;margin:0 auto;}
+.pro_wrap ul{width: 90.32%;margin: 0.2rem auto 0;overflow: hidden;display: none;}
+.pro_wrap ul.team1{display: block;}
+.pro_wrap li{width: 50%;margin-bottom: 0.2rem;overflow: hidden;border-bottom: 0.01rem solid #c9c9c9;float: left;}
+.pro_wrap li dl{overflow: hidden;margin-bottom: 0.15rem;width: 100%;}
+.pro_wrap li dt{display: block;overflow: hidden;width: 39.5%;float: left;margin-top: 0.2rem;}
+.pro_wrap li dt img{width: 91%;border-radius: 50%;}
+.pro_wrap li dd{display: block;float: left;text-align: left;width: 60.5%;margin-top: 0.15rem;}
+.pro_wrap li h5{height: 0.3rem;line-height: 0.3rem;font-size: 0.18rem;color: #0c0360;}
+.pro_wrap li h6{height: 0.48rem;line-height: 0.24rem;font-size: 0.14rem;color: #ac8a8a;margin-bottom: 0.04rem;padding-right: 0.15rem;}
+.pro_wrap li .icon{float: left;display: block;width: 0.37rem;margin-right:0.26rem;}
+
+.about_msg .msg_box{width: 90%;height: 5.5rem;position: absolute;top:20%;left: 50%;margin:0 0 0 -45%;z-index: 100;background-color: #fff;}
+.about_msg ul{width: 100%;height: 100%;position: relative;}
+.about_msg li{display: none;width: 100%;height: 100%;}
+.about_msg li h1{width: 100%;height: 0.55rem;line-height: 0.55rem;font-size: 0.22rem;background-color: #f6f6f6;border-bottom: 1px #e7e7e7 solid;box-sizing: border-box;padding-left: 0.2rem;position: absolute;top: 0;left: 0;}
+.about_msg li .about_msg_ctn{width: 100%;height: 100%;padding:0.55rem 0 0.4rem;color: #111;box-sizing: border-box;overflow-y: scroll;}
+.about_msg li h5{padding:0 0.2rem;line-height: 0.32rem;font-size: 0.2rem;font-weight: bold;margin-top: 0.15rem;}
+.about_msg li p{padding:0 0.2rem;line-height: 0.32rem;font-size: 0.18rem;}
+
+.about_s_msg .msg_box{width: 60%;position: absolute;top:50%;left: 50%;margin:-1rem 0 0 -30%;z-index: 100;background-color: #fff;}
+.about_s_msg li{display: none;width: 100%;height: 100%;height: 1rem;}

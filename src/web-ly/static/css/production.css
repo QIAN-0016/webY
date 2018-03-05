@@ -1,0 +1,13 @@
+/* 作品 */
+.pro_nav{width:100%;padding:0.2rem 0.29rem;text-align: center;border-bottom:solid 0.02rem #e5e1e1;background-color: #fff;overflow: hidden;box-sizing: border-box;}
+.pro_nav a{display: block; float:left;width:1.84rem;height:0.64rem;background-color: #eee;line-height: 0.64rem;text-align: center;font-size:0.25rem;color:#3a3a3a;margin:0.05rem 0.05rem;}
+.pro_nav a.on{background-color: #053a95;color:#fff;}
+.pro_wrap{width:100%;min-height:3rem;background-color: #eee;padding:0.16rem 0;}
+.pro_wrap .pro_cnt{width:100%;margin:0 auto;position: relative;}
+.pro_wrap .cell{width:2.76rem;padding:0.06rem;box-sizing: border-box;background-color:#fff;position: absolute;overflow: hidden;display: none;}
+.pro_wrap .cell .cell_img{width:100%;min-height: 2.66rem;margin:0 0 0.2rem;}
+.pro_wrap .cell p{width: 100%;text-align: center;font-size:0.18rem;color:#595265;}
+.pro_wrap .last{text-align: center;font-size:0.16rem;color:#595265;padding:0.2rem 0 0.1rem;}
+.meta_item{overflow: hidden;line-height: 0.23rem;padding:0.16rem 0 0.06rem;}
+.meta_item .like_group .like_btn{display: block;width:0.57rem;height: 0.23rem;background: url(../img/production/like_icon.png) no-repeat;background-size: 100% 100%;text-indent: -1rem;overflow: hidden;}
+.meta_item .like_group .like_num{display: block;height: 0.21rem;border:solid 1px #989191;border-radius:0.03rem;padding:0 0.06rem;margin-left:0.08rem;font-size:0.13rem;color:#989191;line-height: 0.21rem;}

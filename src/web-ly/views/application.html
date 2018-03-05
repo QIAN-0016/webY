@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="format-detection" content="telephone=no" />
+<title>老鹰画室 报名简章</title>
+
+<!-- 公用css及js start -->
+<link rel="stylesheet" href="../static/css/common.css" />
+<script type="text/javascript" src="../static/js/jquery.js"></script>
+<script type="text/javascript" src="../static/js/common.js"></script>
+<!-- 公用css及js end -->
+<link rel="stylesheet" href="../static/css/application.css" />
+<link rel="stylesheet" href="../static/js/mobiscroll/normalize3.0.2.min.css" />
+<link rel="stylesheet" href="../static/js/mobiscroll/mobiscroll.css" />
+<link rel="stylesheet" href="../static/js/mobiscroll/mobiscroll_date.css" />
+</head>
+<body>
+<!-- 公用搜索 start -->
+    <div class="navbar_wrap">
+        <div class="navbar_header">
+            <div class="navbar_hd">
+                <a href="" class="logo"><img src="../static/img/ft_logo.png" alt="logo"></a>
+                <span class="navbar_close"><i></i></span>
+            </div>
+            <div class="navbar_collapse">
+                <div class="navbar_search">
+                    <form action=""  method="post">
+                        <input type="text" placeholder="搜索一下" id="search" class="ipt_txt" name="search">
+                        <button type="submit" class="search_btn"><i class="search_icon"></i></button>
+                    </form>
+                </div>
+                <div class="navbar_nav">
+                    <dl>
+                        <dt><em>jlfajdflajsdfssssss</em><span class="fr navbar_arrow"><i></i></span></dt>
+                        <dd>
+                            <a href="">aaaa</a>
+                            <a href="">aaaa</a>
+                            <a href="">aaaa</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><em>tttt</em><span class="fr navbar_arrow"><i></i></span></dt>
+                        <dd>
+                            <a href="">aaaa</a>
+                            <a href="">aaaa</a>
+                            <a href="">aaaa</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="navbar_contact">
+                    <a href="" class="navbar_qq"><img src="../static/img/qq.png" alt=""></a>
+                    <a href="" class="navbar_sina"><img src="../static/img/sina.png" alt=""></a>
+                    <a href="" class="navbar_wx"><img src="../static/img/wx.png" alt=""></a>
+                    <a href="tel:4001178866" class="navbar_tel">TEL:400-117-8866</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar_dialog"></div>
+    </div>
+    
+
+    <!-- 隐藏菜单按钮 -->
+    <button class="navbar_toggle"><span class="icon_bar"></span><span class="icon_bar"></span><span class="icon_bar"></span></button>
+<!-- 公用搜索 end -->
+
+<!-- container start -->
+    <div class="container">
+        <div class="banner_sm">
+            <img src="../static/img/banner/banner_sm2.jpg">
+            <p class="txt ft_30">2019届预报名通道</p>
+        </div>
+        <div class="application_hd">
+            <p>请认真填完此报名表，确保信息的完整及准确。<br>预报名流程：填写预报名表→等待校 区总务回复→按总务提示缴纳预定金→确认缴费完成→预报名成功</p>
+        </div>
+        <div class="apl_form">
+            <!-- 报名表 -->
+            <form action="" method="POST" id="form">
+                <ul>
+                    <li>
+                        <h5>姓名：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请填写姓名" class="ipt_txt" name="name">
+                            <label class="error error_name" data-msg="请填写姓名"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>性别：</h5>
+                        <div class="apl_ipt_box">
+                            <label class="ipt_cls"><input type="radio" value="男" name="sex" class="ipt_slt">男</label>
+                            <label class="ipt_cls"><input type="radio" value="女" name="sex" class="ipt_slt">女</label>
+                            <label class="error error_sex" data-msg="请选择性别"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>年级：</h5>
+                        <div class="apl_ipt_box">
+                            <label class="ipt_cls"><input type="radio" value="高一" name="grade" class="ipt_slt">高一（以18年九月入学年级为准）</label>
+                            <label class="ipt_cls"><input type="radio" value="高二" name="grade" class="ipt_slt">高二（以18年九月入学年级为准）</label>
+                            <label class="ipt_cls"><input type="radio" value="高三" name="grade" class="ipt_slt">高三（以18年九月入学年级为准）</label>
+                            <label class="ipt_cls"><input type="radio" value="其它" name="grade" class="ipt_slt">其它</label>
+                            <label class="error error_grade" data-msg="请选择年级"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>手机号码：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请填写手机号码" class="ipt_txt" id="mobile" name="mobile">
+                            <label class="error error_mobile" data-msg="请填写手机号码"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>QQ/微信：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请填写任意一个" class="ipt_txt" id="contact" name="contact">
+                            <label class="error error_contact" data-msg="请填写QQ或微信任意一个"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>电子邮箱：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请填写电子邮箱" class="ipt_txt" id="email" name="email">
+                            <label class="error error_email" data-msg="请填写电子邮箱"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>家庭住址：</h5>
+                        <div class="apl_ipt_box">
+                            <div class="area">
+                                <select class="province" name="province" id="province"></select><select class="city" name="city" id="city"></select><select class="district" name="district" id="district"></select>
+                            </div>
+                            <textarea class="area_details" placeholder="街道信息" name="areatext" id="areatext"></textarea>
+                            <label class="error error_area" data-msg="请填写家庭住址"></label>    
+                        </div>
+                    </li>
+                    <li>
+                        <h5>预计到校日期：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请选择预计到校日期" class="ipt_txt" id="arriveTime" name="arriveTime">
+                            <label class="error error_arriveTime" data-msg="请选择预计到校日期"></label>
+                        </div>
+                    </li>
+                    <li>
+                        <h5>原就读学校：</h5>
+                        <div class="apl_ipt_box">
+                            <input type="text" placeholder="请填写原就读学校" class="ipt_txt" id="schoolpre" name="schoolpre">
+                            <label class="error error_schoolpre" data-msg="请填写原就读学校"></label>
+                        </div>
+                    </li>
+                    <li>
+                        <h5>校区选择：</h5>
+                        <div class="apl_ipt_box">
+                            <label class="ipt_cls"><input type="radio" value="杭州富阳校区" name="campus" class="ipt_slt">杭州富阳校区</label>
+                            <label class="ipt_cls"><input type="radio" value="杭州银湖校区" name="campus" class="ipt_slt">杭州银湖校区</label>
+                            <label class="ipt_cls"><input type="radio" value="杭州象山精品校区" name="campus" class="ipt_slt">杭州象山精品校区</label>
+                            <label class="ipt_cls"><input type="radio" value="深圳校区" name="campus" class="ipt_slt">深圳校区</label>
+                            <label class="ipt_cls"><input type="radio" value="义乌校区" name="campus" class="ipt_slt">义乌校区</label>
+                            <label class="ipt_cls"><input type="radio" value="温州校区" name="campus" class="ipt_slt">温州校区</label>
+                            <label class="ipt_cls"><input type="radio" value="衢州校区" name="campus" class="ipt_slt">衢州校区</label>
+                            <label class="error error_campus" data-msg="请选择校区"></label>
+                        </div>
+                    </li>
+                    <li>
+                        <h5>寝室选择：</h5>
+                        <div class="apl_ipt_box">
+                            <label class="ipt_cls"><input type="radio" value="4人间（量少）" name="dormitory" class="ipt_slt">4人间（量少）</label>
+                            <label class="ipt_cls"><input type="radio" value="6人间" name="dormitory" class="ipt_slt">6人间</label>
+                            <label class="ipt_cls"><input type="radio" value="8人间" name="dormitory" class="ipt_slt">8人间</label>
+                            <label class="error error_dormitory" data-msg="请选择寝室"></label>
+                        </div>
+                    </li>
+                    <li>
+                        <h5>班型选择：</h5>
+                        <div class="apl_ipt_box">
+                            <label class="ipt_cls"><input type="radio" value="精品班" name="classType" class="ipt_slt">★★★精品班★★★  </label>
+                            <label class="ipt_cls"><input type="radio" value="平行班" name="classType" class="ipt_slt">平行班</label>
+                            <label class="ipt_cls"><input type="radio" value="校长班" name="classType" class="ipt_slt">校长班</label>
+                            <label class="error error_classType" data-msg="请选择寝室"></label>
+                        </div>
+                    </li>
+                </ul>
+                <a class="form_btn" id="formBtn">提交报名信息</a>
+            </form>
+            <p class="form_tips">提交报名信息审核通过后，各校区总务将会在48小时内以电话或者短信的方式联系您，帮助您完成接下来的步骤。此表单杭州老鹰画室拥有最终解释权。</p>
+        </div>
+    </div>
+<!-- container end -->
+<!-- 公用底部 start -->
+    <div class="footer">
+        <div class="ft_hd">
+            <a class="ft_logo"><img src="../static/img/ft_logo.png"></a>
+            <a class="ft_ewm"><img src="../static/img/ft_ewm.png"></a>
+        </div>
+        <div class="ft_navs">
+            <ul>
+                <li><a href="">成绩</a></li>
+                <li><a href="">招生</a></li>
+                <li><a href="">资讯</a></li>
+                <li><a href="">团队</a></li>
+                <li><a href="">视频</a></li>
+                <li><a href="">作品</a></li>
+                <li><a href="">微课堂</a></li>
+                <li><a href="">关于</a></li>
+                <li><a href="">线上报名</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <p>CopyRight © 2008 - 2016 杭州老鹰教育科技股份有限公司 版权所有 浙ICP备11043441号-2</p>
+        </div>
+        <div class="ft_about">
+            <a href="">最新成绩</a>
+            <a href="">招生简章</a>
+            <a href="">资讯</a>
+            <a href="">服务专区</a>
+            <a href="">校区介绍</a>
+        </div>
+    </div>
+<!-- 公用底部 end -->
+<script type="text/javascript" src="../static/js/area.js"></script>
+<script type="text/javascript" src="../static/js/areaSelect.js"></script>
+<script type="text/javascript" src="../static/js/mobiscroll/mobiscroll_date.js"></script>
+<script type="text/javascript" src="../static/js/mobiscroll/mobiscroll.js"></script>
+<script type="text/javascript" src="../static/js/mbDialog.js"></script>
+<script type="text/javascript">
+var isMobile=/^\d{11}$/;//手机号正则必须为11为数
+var isMailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/; //邮箱正则
+//地址
+var area_id1 = 0;
+var area_id2 = 0;
+var area_id3 = 0;
+var options = {
+    data : data_area
+}
+var loc = new multi_select(options);
+loc.bind('.province',area_id1);
+loc.bind('.city',area_id2);
+loc.bind('.district',area_id3);
+$(".province option").eq(0).text("省份");
+$(".city option").eq(0).text("城市");
+$(".district option").eq(0).text("县区");
+
+$(function(){
+    // 表单数据
+    var dataJosn = {
+        "name":"",
+        "sex":"",
+        "grade":"",
+        "mobile":"",
+        "contact":"",
+        "email":"",
+        "province":"",
+        "city":"",
+        "district":"",
+        "areatext":"",
+        "arriveTime":"",
+        "schoolpre":"",
+        "campus":"",
+        "dormitory":"",
+        "classType":""
+    }
+    // 表单
+    var flag=true;
+    $("#formBtn").click(function(){
+        dataJosn.name=$("input[name='name']").val();
+        dataJosn.sex=$("input[name='sex']:checked").val();
+        dataJosn.grade=$("input[name='grade']:checked").val();
+        dataJosn.mobile=$("input[name='mobile']").val();
+        dataJosn.contact=$("input[name='contact']").val();
+        dataJosn.email=$("input[name='email']").val();
+        dataJosn.province=$(".province option:checked").text();
+        dataJosn.city=$(".city option:checked").text();
+        dataJosn.district=$(".district option:checked").text();
+        dataJosn.areatext=$("#areatext").val();
+        dataJosn.arriveTime=$("input[name='arriveTime']").val();
+        dataJosn.schoolpre=$("input[name='schoolpre']").val();
+        dataJosn.campus=$("input[name='campus']:checked").val();
+        dataJosn.dormitory=$("input[name='dormitory']:checked").val();
+        dataJosn.classType=$("input[name='classType']:checked").val();
+        dataJosn.province= dataJosn.province=="省份"?"":dataJosn.province;
+        dataJosn.city= dataJosn.city=="城市"?"":dataJosn.city;
+        dataJosn.district= dataJosn.district=="县区"?"":dataJosn.district;
+
+        var scrollh=false; 
+        var submitFlag=false;  //false：表单已填写完 true：表单未填写完（请求阻拦）
+        var scrollFun=function($this,sh){
+            if(!sh){
+                scrollh=true;
+                var st=$("#form h5").outerHeight()+10;
+                var sh=$this.parents(".apl_ipt_box").offset().top;
+                $("html,body").animate({"scrollTop":sh-st},350);
+            }
+        }
+        for(var k in dataJosn){
+            if(k == "province" || k == "city" || k == "district" || k == "areatext"){
+            // 地址填写验证  
+                dataJosn.province
+                if(!dataJosn[k]){
+                    var th = $(".error_area");
+                    var d = th.data("msg");
+                    th.text(d);
+                    submitFlag=true;
+                    scrollFun($(".error_area"),scrollh);
+                }else{
+                    var th = $(".error_area");
+                    th.text("");
+                }
+            }else{
+            // 除地址外其它信息填写验证
+                if(!dataJosn[k]){
+                    var th = $(".error_"+k);
+                    var d = th.data("msg");
+                    th.text(d);
+                    submitFlag=true;
+                    scrollFun(th,scrollh);
+                }else{
+                    var th = $(".error_"+k);
+                    th.text("");
+                    // 手机格式验证
+                    if(k=="mobile" && !isMobile.test(dataJosn[k])){
+                        th.text("手机号码格式不正确");
+                        scrollFun(th,scrollh);
+                    }
+                    // 邮箱格式验证
+                    if(k=="email" && !isMailReg.test(dataJosn[k])){
+                        th.text("邮箱地址格式不正确");
+                        scrollFun(th,scrollh);
+                    } 
+                }
+            }
+        }
+        
+        if(!submitFlag&&flag){
+            // 表单提交
+            flag=false;
+            $.post("",dataJosn,function(data){
+                flag=true;
+                if(data.state==1){  //提交成功
+                    dialog({
+                        title:"提示",
+                        desc:"报名成功"
+                    });
+                }else{ //提交失败
+                    dialog({
+                        title:"提示",
+                        desc:"报名失败"
+                    });
+                }
+            });
+        }
+    });
+
+    // deta
+    var currYear = (new Date()).getFullYear();	
+	var opt={};
+	opt.date = {preset : 'date'};
+	opt.datetime = {preset : 'datetime'};
+	opt.time = {preset : 'time'};
+	opt.default = {
+		theme: 'android-ics light', //皮肤样式
+		display: 'modal', //显示方式 
+		mode: 'scroller', //日期选择模式
+		dateFormat: 'yyyy-mm-dd',
+		lang: 'zh',
+		showNow: true,
+        nowText: "今天",
+		startYear: currYear - 50, //开始年份
+		endYear: currYear + 10 //结束年份
+	};
+	$("#arriveTime").mobiscroll($.extend(opt['date'], opt['default']));
+});
+</script>
+</body>
+</html>

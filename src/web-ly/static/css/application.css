@@ -1,0 +1,14 @@
+.application_hd{width:100%;font-size:0.2rem;color:#202020;padding:0.2rem 0.36rem;border-bottom:solid 0.02rem #e5e1e1;box-sizing: border-box;}
+.apl_form{padding:0.2rem 0.2rem 0.3rem;box-sizing: border-box;}
+.apl_form ul{width:100%;background-color: #fff;padding:0.22rem;;box-sizing: border-box;}
+.apl_form ul li{padding:0 0 0.2rem;}
+.apl_form h5{font-size:0.22rem;color:#5d5a5a;padding:0 0 0.1rem;}
+.apl_form p.form_tips{font-size:0.2rem;color:#202020;}
+.apl_ipt_box{padding-left:0.08rem;}
+.apl_ipt_box .error{display:block;height:0.24rem;line-height:0.24rem;font-size:0.16rem;color:#f00;}
+.apl_ipt_box .ipt_txt{width:80%;height: 0.36rem;line-height: 0.36rem;padding:0 0.1rem;border:solid 1px #5d5a5a;font-size:0.18rem;color:#5d5a5a;box-sizing: border-box;}
+.apl_ipt_box .ipt_cls{display:block;font-size:0.16rem;color:#5d5a5a;padding:0.03rem 0;}
+.apl_ipt_box .ipt_slt{width:0.18rem;height: 0.18rem;margin-right:0.08rem;}
+.apl_ipt_box .area select{width:24%;font-size:0.16rem;height: 0.36rem;line-height: 0.36rem;margin-right:0.06rem;padding:0 0.06rem;}
+.apl_ipt_box .area_details{width:80%;height:1rem;padding:0.1rem;box-sizing: border-box;font-size:0.16rem;color:#5d5a5a;margin:0.1rem 0 0;resize: none;}
+.form_btn{width:50%;height: 0.46rem;line-height: 0.46rem;background-color: #313131;margin: 0.5rem auto;text-align: center;font-size:0.2rem;color:#fff;border-bottom:solid 1px #9f9f9f;}

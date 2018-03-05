@@ -1,0 +1,13 @@
+.pro_nav{text-align: center;border-bottom: 0.02rem solid #e5e1e1;margin-bottom: 0.22rem;overflow:hidden;}
+.pro_nav ul{width: 90.63%;margin: 0.2rem auto 0.08rem;overflow: hidden;}
+.pro_nav li{width: 33.33%;float: left;margin-bottom: 0.1rem;}
+.pro_nav p{width: 94.83%;margin: 0 auto;height: 0.65rem;line-height: 0.65rem;font-size: 0.26rem;color: #3a3a3a;box-sizing: border-box;letter-spacing: 0.03rem;background-color: #eee;}
+.pro_nav p.chose{background-color: #053a95;color: #fff;}
+.pro_wrap{width: 100%;overflow:hidden;}
+.pro_wrap ul{width: 100%;overflow: hidden;display: none;}
+.pro_wrap ul.pro_wrap_ul_1{display: block;}
+.pro_wrap li{width: 100%;overflow: hidden;border-bottom: 0.1rem solid #e5e1e1;padding:0 0.3rem 0.3rem;margin-top: 0.2rem;box-sizing: border-box;}
+.pro_wrap li a{overflow: hidden;clear: both;}
+.pro_wrap ul li:last-child{border-bottom: none;margin-bottom: 1.5rem;}
+.pro_wrap li p{display: block;float: left;width: 54%;font-size: 0.28rem;color: #3a3a3a;line-height: 0.4rem;}
+.pro_wrap li img{display: block;float: right;width: 30%;margin-top: 0.05rem;}

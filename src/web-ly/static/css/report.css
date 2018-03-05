@@ -1,0 +1,15 @@
+/* 成绩 */
+.report_navs{width:100%;text-align: center;padding:0.36rem 0;border-bottom:solid 0.17rem #e5e1e1;}
+.report_navs a{display: inline-block;width:1.78rem;height:0.63rem;line-height: 0.63rem;font-size:0.25rem;color:#3a3a3a;}
+.report_navs a.on{background-color: #053a95;font-size:0.25rem;color:#fff;}
+.report_cnt{padding:0.28rem 0 0.5rem;font-size:0.2rem;color:#232323;}
+.report_title{width:100%;text-align: center;}
+.report_title em{font-size:0.12rem;}
+.report_cnt .content{padding:0 0.46rem;}
+.report_cnt .rp_content{line-height: 0.32rem;}
+.report_txt_drawer{border-top:solid 1px #181818;padding:0.16rem 0}
+.report_cnt .content .report_txt_drawer p{line-height: 0.22rem;}
+/* 报名简章 */
+.report_cnt .sg_content{line-height: 0.24rem;}
+.report_cnt .sg_content p{padding:0.09rem 0;font-size:0.2rem;color:#232323;}
+.banner_sg{width:100%;margin:0.24rem 0;}

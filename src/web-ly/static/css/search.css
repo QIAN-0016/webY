@@ -1,0 +1,13 @@
+.pro_nav{text-align: center;border-bottom: 0.02rem solid #e5e1e1;margin-bottom: 0.22rem;overflow:hidden;}
+.pro_nav dl{width: 100%;padding:0.35rem 0.3rem 0.15rem;overflow: hidden;box-sizing: border-box;}
+.pro_nav dt{width: 100%;clear:both;overflow: hidden;}
+.pro_nav dt input{display: block;float: left;width: 75%;height: 0.55rem;line-height: 0.55rem;background-color: #eee;border:none;font-size: 0.24rem;color: #000;box-sizing: border-box;padding: 0 0.2rem;}
+.pro_nav dt #search{display: block;float: right;width: 20%;height: 0.55rem;line-height: 0.55rem;background-color: #053a95;font-size: 0.28rem;color: #fff;}
+.pro_nav dd{overflow: hidden;width: 100%;height: 0.45rem;line-height:0.45rem;font-size: 0.16rem;color: #7a7474;text-align: left;}
+.pro_wrap{width: 100%;overflow:hidden;}
+.pro_wrap ul{width: 100%;overflow: hidden;}
+.pro_wrap li{width: 100%;overflow: hidden;border-bottom: 0.1rem solid #e5e1e1;padding:0 0.3rem 0.3rem;margin-top: 0.2rem;box-sizing: border-box;}
+.pro_wrap li a{overflow: hidden;}
+.pro_wrap ul li:last-child{border-bottom: none;margin-bottom: 1.5rem;}
+.pro_wrap li p{display: block;float: left;width: 54%;font-size: 0.28rem;color: #3a3a3a;line-height: 0.4rem;}
+.pro_wrap li img{display: block;float: right;width: 30%;margin-top: 0.05rem;}
