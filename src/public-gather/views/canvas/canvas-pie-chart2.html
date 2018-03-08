@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>二维饼形图2</title>
+</head>
+<body>
+
+<canvas id="canvas" width="1000" height="500"></canvas>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="https://www.zcmlc.com/static/js/excanvas.js"></script>
+<![endif]-->
+<script type="text/javascript">
+var pieData={
+	amounts:[], //金额总额
+	colors:[],	//区块颜色
+	titles:[],	//区块名称
+	radius:150,	//图形半径
+	textRadius:50//文字半径
+}
+/* 二维饼形图 */
+function pieChart(data){
+	var total = 0;//总值
+	var len = data.titles.length;
+	for(var i=0; i<len; i++){
+		var n = data.amounts[i];
+		total += n;
+	}
+	if(total==0){return false;}
+	var cvs = document.getElementById("canvas");
+	var ctx = cvs.getContext("2d");
+	var x=cvs.clientWidth/2; //圆心纵横坐标
+	var y=cvs.clientHeight/2; //圆心纵横坐标
+	var r=100; //半径
+	var p1=p2=0; //扇形的起始结束角度
+	var initAngle=0;//初始角度
+
+	for(var i=0;i<len;i++){
+		p1 += i==0 ? initAngle : data.amounts[i-1]/total*2;
+		p2 += i==0 ? initAngle+data.amounts[i]/total*2 : data.amounts[i]/total*2;
+		
+		//绘制扇形
+		ctx.fillStyle=data.colors[i];
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		ctx.arc(x,y,data.radius,p1*Math.PI,p2*Math.PI);
+		ctx.lineTo(x,y);
+		ctx.fill();
+		ctx.closePath();
+		
+		var lr = p1+ data.amounts[i]/total; //折线顶点半径
+		lineX = x+ data.radius*Math.cos(lr*Math.PI);
+		lineY = y+ data.radius*Math.sin(lr*Math.PI);
+		lineX2 = x+ (data.radius+data.textRadius)*Math.cos(lr*Math.PI);
+		lineY2 = y+ (data.radius+data.textRadius)*Math.sin(lr*Math.PI);
+
+		//绘制文字标识线
+		ctx.beginPath();
+		ctx.strokeStyle=data.colors[i];
+		ctx.moveTo(lineX,lineY);
+		ctx.lineTo(lineX2,lineY2);
+		var txtLen = data.titles[i].length;
+		var lw = 16*(txtLen+1);
+		if(lr%2 >= 0.5 && lr%2 <= 1.5){
+			ctx.lineTo(lineX2-lw,lineY2);
+		}else{
+			ctx.lineTo(lineX2+lw,lineY2);
+		}
+		ctx.stroke();
+		ctx.closePath();
+
+		//绘制文字
+		ctx.beginPath();
+		ctx.textAlign="center";
+		if(lr%2 >= 0.5 && lr%2 <= 1.5){
+			lineX2-= lw/2;
+		}else{
+			lineX2+=lw/2;
+		}
+		ctx.fillStyle=data.colors[i];
+		ctx.font='14px "Hiragino Sans GB","Microsoft Yahei",宋体,Arial,Helvetica,sans-serif';
+		ctx.fillText(data.titles[i], lineX2, lineY2-10);
+		ctx.closePath();
+	}
+}
+var nData={
+		amounts:[],
+		colors:[],
+		titles:[]
+	};
+nData.amounts=["0","3000.36","0","100","300","900"];
+nData.colors=["#ffa746","#42c9ff","#22c257","#3cdfc2","#ff72a4","#d272ff"];
+nData.titles=["定期待收收益","定期已收收益","定期未产生收益","周薪持","喵钱包","不定宝"];
+
+var dataLen = nData.titles.length;
+for(var i=0;i<dataLen;i++){
+	if(parseFloat(nData.amounts[i])){
+		pieData.amounts.push(parseFloat(nData.amounts[i]));
+		pieData.colors.push(nData.colors[i]);
+		pieData.titles.push(nData.titles[i]);
+	}
+}
+
+pieChart(pieData);
+</script>
+</body>
+</html>
