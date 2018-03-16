@@ -644,7 +644,7 @@ var machine1 = $("#machine1").slotMachine({
 });
 function prize(n){
 	dialog({
-        desc:"恭喜您获得"+playArr[n]+"元现金券奖励！"
+        desc:"恭喜您获得"+playArr[n]
     });
 }
 function shake(n){

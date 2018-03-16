@@ -77,7 +77,7 @@ svg{position: absolute;height: 0;overflow: hidden;}
 
 <body>
 <div class="main">
-    <div class="act_img"><img src="../static/img/tigermachine_01.jpg" alt="招财猫理财" />
+    <div class="act_img"><img src="../static/img/tigermachine_01.jpg" />
         <div class="tm_wrap">
             <div id="machine1" class="slotMachine">
                 <div class="slot"><div class="slot_tb slot_t">8</div>5<div class="slot_tb slot_b">8</div></div>
@@ -102,9 +102,8 @@ svg{position: absolute;height: 0;overflow: hidden;}
 <script type="text/javascript" src="../../static/js/jquery.js"></script>
 <script type="text/javascript" src="../../static/js/jquery.slotmachine.js"></script>
 <script type="text/javascript">
-var playArr = [5,8,10,12,16,18,24,32,58,68,88,128,158];
 $(function(){
-    //我的中奖纪录
+    //开始抽奖
     $("#play").click(function(){
         shake(3);
     });
