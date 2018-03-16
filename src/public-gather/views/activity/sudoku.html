@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="screenBg">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="format-detection" content="telephone=no" />
+<title>九宫格</title>
+<style>
+html {background-color:#006bd5;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;font-size:100px;}
+@media screen and (max-width:319px) {
+    html{font-size:38px;}
+}
+@media screen and (min-width:320px) and (max-width:359px) {
+    html{font-size:50px;}
+}
+@media screen and (min-width:360px) and (max-width:374px) {
+    html{font-size:56.25px;}
+}
+@media screen and (min-width:375px) and (max-width:409px) {
+    html{font-size:58.59px;}
+}
+@media screen and (min-width:410px) and (max-width:479px) {
+    html{font-size:64px;}
+}
+@media screen and (min-width:480px) and (max-width:559px) {
+    html{font-size:75px;}
+}
+@media screen and (min-width:560px) and (max-width:639px) {
+    html{font-size:87.5px;}
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {margin: 0;padding: 0;}
+body{ font-family:"Helvetica Neue",Helvetica,Arial,"微软雅黑",sans-serif;color:#222; font-size:0.24rem;}
+body, button, input, select, textarea {outline:none;}
+input, select, textarea {font-size: 100%;}
+table {border-collapse:collapse; border-spacing:0;}
+th {text-align: inherit;}
+fieldset, img {border: 0;}
+iframe {display: block;}
+abbr, acronym {border: 0;font-variant: normal;}
+del {text-decoration: line-through;}
+address, caption, cite, code, dfn, em, th, var {font-style: normal;font-weight: 500;}
+ol, ul {list-style: none;}
+caption, th {text-align: left;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight: 500;}
+a:hover {text-decoration:none;cursor:pointer;}
+ins, a {text-decoration: none;outline:none; color:#222;}
+i{font-style:normal;}
+.main{ max-width:640px; margin:0 auto -19px;position: relative;z-index:10;overflow: hidden;}
+.lottery_wrap{width:100%;border:solid 1px #000;padding:0.06rem 0;box-sizing:border-box;}
+.lottery_inner{width:6rem;display: block;border-radius:0.15rem;overflow: hidden;position: relative;margin:0 auto;box-sizing:border-box;}
+.lot_con{width:100%;height:100%;display: block;margin:0 auto;border-radius:0.13rem;overflow: hidden;}
+.lot_con ul{display: block;overflow:hidden;margin:0 auto;padding:0.02rem;box-sizing:border-box;}
+.lot_con ul li{width:1.94rem;height:1.94rem;line-height:1.94rem;text-align:center;color:#fff;display:block;background-color: #ccc; float:left;border-radius:0.2rem;margin:0.02rem;position: relative;}
+.lot_con ul li.lottery-unit{padding:0.1rem;box-sizing:border-box;}
+.lot_con ul li.lot_btn{background-color:#003881;}
+.lot_con ul li.active{background-color: #ff0;}
+</style>
+</head>
+<body>
+<div class="main">
+    <div class="lottery_wrap">
+         <div class="lottery">
+            <div class="lottery_inner">
+                <div class="lot_con" id="lottery">
+                    <ul>
+                        <li class="lottery-unit lottery-unit-0"><p>1</p></li>
+                        <li class="lottery-unit lottery-unit-1"><p>2</p></li>
+                        <li class="lottery-unit lottery-unit-2"><p>3</p></li>
+                        <li class="lottery-unit lottery-unit-7"><p>8</p></li>
+                        <li class="lot_btn">开始</li>
+                        <li class="lottery-unit lottery-unit-3"><p>4</p></li>
+                        <li class="lottery-unit lottery-unit-6"><p>7</p></li>
+                        <li class="lottery-unit lottery-unit-5"><p>6</p></li>
+                        <li class="lottery-unit lottery-unit-4"><p>5</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../../static/js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){
+    lottery.init('lottery');
+    $(".lot_btn").click(function(){
+        lottery.prize = 1;  //抽奖中奖下标[0,1,2,3,4,5,6,7]
+        console.log(111);
+        roll();    
+    });
+});
+
+/****转盘*****/
+var lottery={
+    index:-1,	//当前转动到哪个位置，起点位置
+    count:0,	//总共有多少个位置
+    timer:0,	//setTimeout的ID，用clearTimeout清除
+    speed:150,	//初始转动速度
+    times:0,	//转动次数
+    cycle:40,	//转动基本次数：即至少需要转动多少次再进入抽奖环节
+    prize:-1,	//中奖位置
+    init:function(id){
+        if ($("#"+id).find(".lottery-unit").length>0) {
+            $lottery = $("#"+id);
+            $units = $lottery.find(".lottery-unit");
+            this.obj = $lottery;
+            this.count = $units.length;
+            $lottery.find(".lottery-unit-"+this.index).addClass("active");
+        };
+    },
+    roll:function(){
+        var index = this.index;
+        var count = this.count;
+        var lottery = this.obj;
+        $(lottery).find(".lottery-unit-"+index).removeClass("active");
+        index += 1;
+        if (index>count-1) {
+            index = 0;
+        };
+        $(lottery).find(".lottery-unit-"+index).addClass("active");
+        this.index=index;
+        return false;
+    },
+    stop:function(index){
+        this.prize=index;
+        return false;
+    }
+};
+
+function roll(){
+    lottery.times += 1;
+    lottery.roll();
+    if (lottery.times > lottery.cycle+8 && lottery.prize==lottery.index) {
+        clearTimeout(lottery.timer);
+        setTimeout(function(){
+            alert(lottery.prize);
+            lottery.prize=-1;
+            lottery.times=0;
+            lottery.speed=100;
+        },500);
+    }else{
+        if(lottery.times<lottery.cycle) {
+            lottery.speed -= 10;
+        }else{
+            if (lottery.times > lottery.cycle && lottery.prize==0 && lottery.index==0) {
+                lottery.speed += 140;
+            }else if (lottery.times > lottery.cycle && lottery.prize==1 && lottery.index==1) {
+                lottery.speed += 120;
+            }else if (lottery.times > lottery.cycle && lottery.prize==2 && lottery.index==2) {
+                lottery.speed += 100;
+            }else if (lottery.times > lottery.cycle && lottery.prize==3 && lottery.index==3) {
+                lottery.speed += 80;
+            }else if (lottery.times > lottery.cycle && lottery.prize==4 && lottery.index==4) {
+                lottery.speed += 60;
+            }else if (lottery.times > lottery.cycle && lottery.prize==5 && lottery.index==5) {
+                lottery.speed += 40;
+            }else{
+                lottery.speed += 20;
+            }
+        }
+        if(lottery.speed<40) {//加速最大时，间隔时间不能小于40
+            lottery.speed=40;
+        };
+        lottery.timer = setTimeout(roll,lottery.speed);
+    }
+    return false;
+}
+
+</script>
+</body>
+</html>

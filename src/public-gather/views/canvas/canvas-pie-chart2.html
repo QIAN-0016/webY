@@ -32,7 +32,7 @@ function pieChart(data){
 	var x=cvs.clientWidth/2; //圆心纵横坐标
 	var y=cvs.clientHeight/2; //圆心纵横坐标
 	var r=100; //半径
-	var p1=p2=0; //扇形的起始结束角度
+	var p1=p2=0; //扇形的起始结束角度值
 	var initAngle=0;//初始角度
 
 	for(var i=0;i<len;i++){
@@ -48,7 +48,7 @@ function pieChart(data){
 		ctx.fill();
 		ctx.closePath();
 		
-		var lr = p1+ data.amounts[i]/total; //折线顶点半径
+		var lr = p1+ data.amounts[i]/total; //折线顶点角度值
 		lineX = x+ data.radius*Math.cos(lr*Math.PI);
 		lineY = y+ data.radius*Math.sin(lr*Math.PI);
 		lineX2 = x+ (data.radius+data.textRadius)*Math.cos(lr*Math.PI);

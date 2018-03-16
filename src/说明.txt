@@ -1,1 +1,23 @@
-web-ly: ��ӥ����
+web-ly: 老鹰画室
+
+public-gather:
+    activity:
+        sudoku              //九宫格
+        slotmachine         //滚动抽奖
+    canvas:
+        canvas-pie-chart    //二维饼形图
+        canvas-pie-chart2   //二维饼形图-带箭头指示文字说明
+        canvasRotate        //大转盘 抽奖
+        canvas-cell         //粒子文字
+    date：
+        countdown           //倒计时
+        equal-invest        //计算年化收益-等额本息
+        monthPlan           //回款计划，按月还息,到期还本
+    dialog：
+        dialog-mobile       //提示弹框
+    scroll：
+        jQscroll            //懒加载
+    waterfall：
+        waterfall：         //瀑布流 加载
+
+
