@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<meta name="format-detection" content="telephone=no" />
+<title>大富翁</title>
+<style>
+html {color: #000;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;font-size:100px;background-color: #551643;}
+@media screen and (max-width:319px) {
+	html{font-size:38px;}
+}
+@media screen and (min-width:320px) and (max-width:359px) {
+	html{font-size:50px;}
+}
+@media screen and (min-width:360px) and (max-width:374px) {
+	html{font-size:56px;}
+}
+@media screen and (min-width:375px) and (max-width:409px) {
+	html{font-size:58px;}
+}
+@media screen and (min-width:410px) and (max-width:479px) {
+	html{font-size:64px;}
+}
+@media screen and (min-width:480px) and (max-width:559px) {
+	html{font-size:75px;}
+}
+@media screen and (min-width:560px) and (max-width:639px) {
+	html{font-size:86px;}
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {margin: 0;padding: 0;}
+body{ font-family:"Helvetica Neue",Helvetica,Arial,"微软雅黑",sans-serif;color:#222; font-size:12px;}
+body, button, input, select, textarea {outline:none;}
+input, select, textarea {font-size: 100%;}
+table {border-collapse:collapse; border-spacing:0;}
+th {text-align: inherit;}
+fieldset, img {border: 0;}
+iframe {display: block;}
+abbr, acronym {border: 0;font-variant: normal;}
+del {text-decoration: line-through;}
+address, caption, cite, code, dfn, em, th, var {font-style: normal;font-weight: 500;}
+ol, ul {list-style: none;}
+caption, th {text-align: left;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight: 500;}
+a:hover {text-decoration:none;cursor:pointer;}
+ins, a {text-decoration: none;outline:none; color:#222;}
+
+.main{ max-width:640px; margin:0 auto -19px; overflow:hidden;position:relative;z-index:1;}
+
+.dice{ width:1rem; height:1rem; position:fixed; right:0; bottom:0; margin:0 0.1rem 0.1rem 0; z-index:5; overflow:hidden; display:none;}
+.dice img{ width:100%;}
+.diceMove{ display:block;animation:diceRoll 0.8s 1 linear;-moz-animation:diceRoll 0.8s 1 linear;-webkit-animation:diceRoll 0.8s 1 linear;-o-animation:diceRoll 0.8s 1 linear;transform:translateX(-2.6rem) translateY(-3.6rem);-moz-transform:translateX(-2.6rem) translateY(-3.6rem);-webkit-transform:translateX(-2.6rem) translateY(-3.6rem);-o-transform:translateX(-2.6rem) translateY(-3.6rem);}
+.diceBtn{ width:1rem; height:0.9rem; position:fixed;right:0; bottom:3rem; z-index:106; margin-right:0.04rem;animation:btnRotate 1.6s infinite linear;-moz-animation:btnRotate 1.6s infinite linear;-webkit-animation:btnRotate 1.6s infinite linear;-o-animation:btnRotate 1.6s infinite linear;}
+.diceBtn img{ width:100%;}
+
+.monopoly_track{ width:100%; overflow:hidden; position:relative;z-index: 1;padding:0.2rem 0 0.6rem;background-color:#551643;}
+.monopoly_box{ width:6.1rem; margin:0 0 0 0.44rem; position:relative; overflow:hidden;}
+.monopoly_box ul{ position:relative; overflow:hidden; width:101%; margin-right:-1%;z-index: 1;}
+.monopoly_box li{ width:1.1rem; height:1.1rem; float:left;position:relative;box-sizing:border-box;}
+.monopoly_box .route{border:0.08rem  solid #ffb546;border-radius: 0.08rem;}
+.monopoly_box li span{ font-size: 0.26rem;line-height:1em; color: #fff;position: absolute;left:0.1rem;top:0.1rem;z-index:3;}
+.monopoly_box li p{width:100%;height: 0.28rem;line-height: 0.28rem;text-align: center; font-size:0.18rem;color: #fff;position: absolute;left:0;bottom:0;overflow: hidden;}
+.monopoly_box li p.ft_sm{font-size:0.12rem;}
+.monopoly_box li img{ width:100%; display:block;position:absolute;left:0;top:0;}
+.monopoly_box .rbg_0,.monopoly_box .rbg_1,.monopoly_box .rbg_2,.monopoly_box .rbg_3,.monopoly_box .rbg_4,.monopoly_box .rbg_5,.monopoly_box .rbg_6,.monopoly_box .rbg_7,.monopoly_box .rbg_8{background-color: #fff;}
+.monopoly_box .rbg_1{background-color:#ffd994;}
+.monopoly_box .rbg_2{background-color:#f8f197;}
+.monopoly_box .rbg_3{background-color:#dac3d3;}
+.monopoly_box .rbg_4{background-color:#f3d5cd;}
+.monopoly_box .rbg_5{background-color:#f6d76d;}
+.monopoly_box .rbg_6{background-color:#95d7f7;}
+.monopoly_box .rbg_7{background-color:#a3e1d2;}
+.monopoly_box .rbg_8{background-color:#f8e7d3;}
+.monopoly_box .rbg_0 p{background-color: #ee4848;}
+.monopoly_box .rbg_1 p{background-color: #e37400;}
+.monopoly_box .rbg_2 p{background-color: #a9ac00;}
+.monopoly_box .rbg_3 p{background-color: #c08cd7;}
+.monopoly_box .rbg_4 p{background-color: #f8857e;}
+.monopoly_box .rbg_5 p{background-color: #d98e55;}
+.monopoly_box .rbg_6 p{background-color: #3d8ab6;}
+.monopoly_box .rbg_7 p{background-color: #40ab91;}
+.monopoly_box .rbg_8 p{background-color: #f9a690;}
+.route_shadow{display:block;width:100%;height:100%;background-color:#ff8d20;position:absolute;left:0.04rem;top:0.04rem;}
+
+.player{ width:1.1rem; height:1.1rem;box-sizing:border-box; position:absolute; left:0; top:0; z-index:2;}
+.player i{display:block; width:40%;height: 40%;box-sizing:border-box;text-align: center;background-color:#333;margin:30% 0 0 30%;}
+/* 按钮 */
+@keyframes btnRotate{
+	0%{transform:rotate(0deg);}
+	6%{transform:rotate(-15deg);}
+	12%{transform:rotate(15deg);}
+	18%{transform:rotate(0deg);}
+	24%{transform:rotate(-15deg);}
+	30%{transform:rotate(15deg);}
+	36%{transform:rotate(0deg);}
+	100%{}
+}
+@-moz-keyframes btnRotate{
+	0%{-moz-transform:rotate(0deg);}
+	6%{-moz-transform:rotate(-15deg);}
+	12%{-moz-transform:rotate(15deg);}
+	18%{-moz-transform:rotate(0deg);}
+	24%{-moz-transform:rotate(-15deg);}
+	30%{-moz-transform:rotate(15deg);}
+	36%{-moz-transform:rotate(0deg);}
+	100%{}
+}
+@-webkit-keyframes btnRotate{
+	0%{-webkit-transform:rotate(0deg);}
+	6%{-webkit-transform:rotate(-15deg);}
+	12%{-webkit-transform:rotate(15deg);}
+	18%{-webkit-transform:rotate(0deg);}
+	24%{-webkit-transform:rotate(-15deg);}
+	30%{-webkit-transform:rotate(15deg);}
+	36%{-webkit-transform:rotate(0deg);}
+	100%{}
+}
+@-o-keyframes btnRotate{
+	0%{-o-transform:rotate(0deg);}
+	6%{-o-transform:rotate(-15deg);}
+	12%{-o-transform:rotate(15deg);}
+	18%{-o-transform:rotate(0deg);}
+	24%{-o-transform:rotate(-15deg);}
+	30%{-o-transform:rotate(15deg);}
+	36%{-o-transform:rotate(0deg);}
+	100%{}
+}
+
+@keyframes diceRoll{
+	0%{transform:translateX(0rem) translateY(0rem);}
+	20%{transform:translateX(-1.4rem) translateY(-1rem);}
+	50%{transform:translateX(-2rem) translateY(-2rem);}
+	100%{transform:translateX(-2.6rem) translateY(-3.6rem);}
+}
+@-moz-keyframes diceRoll{
+	0%{-moz-transform:translateX(0rem) translateY(0rem);}
+	20%{-moz-transform:translateX(-1.4rem) translateY(-1rem);}
+	50%{-moz-transform:translateX(-2rem) translateY(-2rem);}
+	100%{-moz-transform:translateX(-2.6rem) translateY(-3.6rem);}
+}
+@-webkit-keyframes diceRoll{
+	0%{-webkit-transform:translateX(0rem) translateY(0rem);}
+	20%{-webkit-transform:translateX(-1.4rem) translateY(-1rem);}
+	50%{-webkit-transform:translateX(-2rem) translateY(-2rem);}
+	100%{-webkit-transform:translateX(-2.6rem) translateY(-3.6rem);}
+}
+@-o-keyframes diceRoll{
+	0%{-o-transform:translateX(0rem) translateY(0rem);}
+	20%{-o-transform:translateX(-1.4rem) translateY(-1rem);}
+	50%{-o-transform:translateX(-2rem) translateY(-2rem);}
+	100%{-o-transform:translateX(-2.6rem) translateY(-3.6rem);}
+}
+</style>
+</head>
+<body>
+<div class="main">
+
+	<div class="monopoly_track">
+        <div class="monopoly_box">
+            <ul id="monopoly">
+                <li class="route route_0 rbg_0">起点</li>
+                <li class="route route_1 rbg_1" title="1">1</li>
+                <li class="route route_2 rbg_2" title="2">2</li>
+                <li class="route route_3 rbg_3" title="3">3</li>
+                <li></li>
+
+                <li></li>
+                <li class="route route_34 rbg_2" title="34">34</li>
+                <li></li>
+                <li class="route route_4 rbg_4" title="4">4</li>
+                <li class="route route_5 rbg_5" title="5">5</li>
+
+                <li class="route route_32 rbg_8" title="32">32</li>
+                <li class="route route_33 rbg_1" title="33">33</li>
+                <li></li>
+                <li></li>
+                <li class="route route_6 rbg_6" title="6">6</li>
+
+                <li class="route route_31 rbg_7" title="31">31</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li class="route route_7 rbg_7" title="7">7</li>
+
+                <li class="route route_30 rbg_6" title="30">30</li>
+                <li></li>
+                <li class="route route_10 rbg_2" title="10">10</li>
+                <li class="route route_9 rbg_1" title="9">9</li>
+                <li class="route route_8 rbg_8" title="8">8</li>
+
+                <li class="route route_29 rbg_5" title="29">29</li>
+                <li></li>
+                <li class="route route_11 rbg_3" title="11">11</li>
+                <li></li>
+                <li></li>
+
+                <li class="route route_28 rbg_4" title="28">28</li>
+                <li></li>
+                <li class="route route_12 rbg_4" title="12">12</li>
+                <li class="route route_13 rbg_5" title="13">13</li>
+                <li></li>
+
+                <li class="route route_27 rbg_3" title="27">27</li>
+                <li></li>
+                <li></li>
+                <li class="route route_14 rbg_6" title="14">14</li>
+                <li></li>
+
+                <li class="route route_26 rbg_2" title="26">26</li>
+                <li></li>
+                <li></li>
+                <li class="route route_15 rbg_7" title="15">15</li>
+                <li></li>
+
+                <li class="route route_25 rbg_1" title="25">25</li>
+                <li></li>
+                <li></li>
+                <li class="route route_16 rbg_8" title="16">16</li>
+                <li class="route route_17 rbg_1" title="17">17</li>
+
+                <li class="route route_24 rbg_8" title="24">24</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li class="route route_18 rbg_2" title="18">18</li>
+
+                <li class="route route_23 rbg_7" title="23">23</li>
+                <li class="route route_22 rbg_6" title="22">22</li>
+                <li class="route route_21 rbg_5" title="21">21</li>
+                <li class="route route_20 rbg_4" title="20">20</li>
+                <li class="route route_19 rbg_3" title="19">19</li>
+
+            </ul>
+            <div class="player"><i></i></div>
+        </div>
+    </div>
+    <div class="dice"><img src="../../static/img/monopoly/dice_1.png"/></div>
+    <div class="diceBtn"><img src="../../static/img/monopoly/diceBtn.png" alt="按钮"/></div>
+    
+</div>
+<script src="../../static/js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+    monopoly.index = 0;//之前的位置
+    monopoly.init("#monopoly"); //初始化
+
+    $(".diceBtn").click(function(){
+		if(monopoly.isAnimate){
+			monopoly.isAnimate=false;
+			var step=Math.floor(Math.random()*5)+1; //骰子点数
+
+			$(".dice").addClass("diceMove");
+			monopoly.timer2 = setInterval(function(){
+				monopoly.roll(step);
+			},50);
+		}
+    });
+})
+
+var monopoly = {
+	index:0,  //当前位置
+	step:0,   //步数
+	count:0,  //总的格数
+	diceNum:0,//摇骰次数
+	timer:null,
+	isAnimate:true, //是否处于移动中
+	timer2:null,
+	time:15,
+	timer3:null,
+	init:function(id){
+		this.count = $(id).find(".route").length-1;
+		this.step = this.index;
+		var pl = $(".route_"+this.index).position().left;
+		var pt = $(".route_"+this.index).position().top;
+		$(".player").css({left:pl,top:pt});
+		wScroll();
+	},
+	move:function(){ //棋子移动
+		var index = this.index;
+		var nl = $(".route_"+index).position().left;
+		var nt = $(".route_"+index).position().top;
+		$(".player").animate({left:nl,top:nt},300);
+	},
+	roll:function(step){ //骰子摇动
+		if(this.time>0){
+			diceRoll(1,this.time%6+1);
+			this.time--;
+		}else{
+			clearInterval(this.timer2);
+			this.timer2 = null;
+			this.time = 15;
+			diceRoll(2,step);
+			monopoly.step += step;
+			wScroll();
+			this.timer3 = setTimeout(move,300);
+		}
+	}
+};
+
+function move(){
+	if(monopoly.index == monopoly.step){
+		clearTimeout(monopoly.timer);
+		monopoly.timer = null;
+		clearTimeout(monopoly.timer3);
+		monopoly.timer3 = null;
+
+		var pTimer = setTimeout(function(){
+			alert(monopoly.index);//中奖结果
+			monopoly.isAnimate = true;
+			$(".dice").removeClass("diceMove");
+		},300);
+	}else{
+		var s = monopoly.step - monopoly.count;
+		if(s<=0){
+			monopoly.index++;
+			monopoly.move();
+			monopoly.timer = setTimeout(move,600);
+		}else{
+			monopoly.index++;
+			if(monopoly.index>monopoly.count){
+				monopoly.index = 1;
+				monopoly.step = s;
+			}
+			monopoly.move();
+			monopoly.timer = setTimeout(move,600);
+		}
+		
+	}
+}
+
+function scrollTopAnimate(st, time) { //滚动条滚动
+    var scrollFrom = parseInt(document.body.scrollTop||document.documentElement.scrollTop),
+        i = 0,
+        runEvery = 5;
+		st = parseInt(st);
+		time /= runEvery;
+
+    var interval = setInterval(function () {
+        i++;
+        document.documentElement.scrollTop = document.body.scrollTop = (st - scrollFrom) / time * i + scrollFrom;
+
+        if (i >= time) {
+            clearInterval(interval);
+        }
+    }, runEvery);
+}
+
+function wScroll(){ //屏幕定位
+	var h = $(window).height();
+	var s = parseInt(document.body.scrollTop||document.documentElement.scrollTop);
+	var num = monopoly.step;
+	if(num>monopoly.count){
+		num = num-monopoly.count;
+	}
+	var t = $(".route_"+num).offset().top;
+	var b = $(".route_"+num).offset().top + $(".route_"+num).height();
+
+	if(!(t>s&&b<(s+h))){
+		var pos = t - h/2;
+		scrollTopAnimate(pos,400);
+	}
+}	
+
+function diceRoll(type,n){
+	switch(n){
+		case 1:
+			$(".dice img").attr("src","../../static/img/monopoly/dice_1.png");
+			break;
+		case 2:
+			if(type==1){
+				$(".dice img").attr("src","../../static/img/monopoly/dice_2.png");
+			}else{
+				$(".dice img").attr("src","../../static/img/monopoly/dice_02.png");
+			}
+			break;
+		case 3:
+			if(type==1){
+				$(".dice img").attr("src","../../static/img/monopoly/dice_3.png");
+			}else{
+				$(".dice img").attr("src","../../static/img/monopoly/dice_03.png");
+			}
+			break;
+		case 4:
+			if(type==1){
+				$(".dice img").attr("src","../../static/img/monopoly/dice_4.png");
+			}else{
+				$(".dice img").attr("src","../../static/img/monopoly/dice_04.png");
+			}
+			break;
+		case 5:
+			$(".dice img").attr("src","../../static/img/monopoly/dice_5.png");
+			break;
+		case 6:
+			if(type==1){
+				$(".dice img").attr("src","../../static/img/monopoly/dice_6.png");
+			}else{
+				$(".dice img").attr("src","../../static/img/monopoly/dice_06.png");
+			}
+			break;
+	}
+}
+
+setTimeout(function(){
+    $("body").append('<div style="display:none;"><img src="../../static/img/monopoly/dice_2.png"/><img src="../../static/img/monopoly/dice_02.png"/><img src="../../static/img/monopoly/dice_3.png"/><img src="../../static/img/monopoly/dice_03.png"/><img src="../../static/img/monopoly/dice_4.png"/><img src="../../static/img/monopoly/dice_04.png"/><img src="../../static/img/monopoly/dice_5.png"/><img src="../../static/img/monopoly/dice_6.png"/><img src="../../static/img/monopoly/dice_06.png"/></div>');
+},1000);
+</script>
+</body>
+</html>
