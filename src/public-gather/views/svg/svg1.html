@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>svg html</title>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+<!-- svg 绘图标签
+    <rect>      矩形
+    <circle>    圆形
+    <ellipse>   椭圆
+    <line>      线
+    <polyline>  折线
+    <polygon>   多边形
+    <path>      路径
+ -->
+ <!-- svg 滤镜 
+    feBlend
+    feColorMatrix
+    feComponentTransfer
+    feCompositie
+    feConvolveMatrix
+    feDiffuseLighting
+    feDisplacementMap
+    feFlood
+    feGaussianBlur
+    feImage
+    feMerge
+    feMorphology
+    feOffset
+    feSpecularLighting
+    feTile
+    feTurbulence
+    feDistantLight
+    fePointLight
+    feSpotLight
+  -->
+    
+
+    <svg width="100%" height="900">
+        <defs>
+            <filter id="Gaussian_Blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+            </filter>
+        </defs>
+        <defs>
+            <linearGradient id="orange_red" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1"/>
+            </linearGradient>
+        </defs>
+        <defs>
+            <radialGradient id="grey_blue" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(200,200,200);stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:rgb(0,255,255);stop-opacity:1"/>
+            </radialGradient>
+        </defs>
+        <defs>
+            <radialGradient id="green_blue" x1="20%" y1="40%" r="50%" x2="50%" y2="50%">
+                <stop offset="0%" style="stop-color:rgb(24, 230, 24);stop-opacity:1"/>
+                <stop offset="100%" style="stop-color:#000;stop-opacity:1"/>
+            </radialGradient>
+        </defs>
+
+        <rect x="0" y="120" width="300" height="100" rx="10" ry="10" style="fill:url(#green_blue);opacity: 0.2;"></rect>
+        <rect x="320" y="0" width="300" height="100" style="fill:url(#grey_blue);stroke-width:2;stroke:#000;fill-opacity:0.4;stroke-opacity:0.2;"></rect>
+        <rect width="300" height="100" style="fill:url(#orange_red);;stroke-width:1;"></rect>
+
+        <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/>
+
+        <ellipse cx="470" cy="170" rx="150" ry="50" style="fill:#000;opacity:0.3;filter:url(#Gaussian_Blur);"></ellipse>
+        <ellipse cx="240" cy="100" rx="220" ry="30" style="fill:lightblue;"></ellipse>
+        <ellipse cx="220" cy="70" rx="190" ry="20" style="fill:lime;"></ellipse>
+        <ellipse cx="210" cy="45" rx="170" ry="15" style="fill:yellow;"></ellipse>
+        
+        <line x1="0" y1="0" x2="300" y2="300" style="stroke:#000;stroke-width:3px;"></line>
+
+        <polygon points="220,100 300,210 180,250 160,250" style="fill:#ccc;stroke:#000;stroke-width:1;"></polygon>
+
+        <polyline points="0,0 0,20 20,20 20,40 40,40 40,60" style="fill:#fff;stroke:#f00;stroke-width:2;"></polyline>
+
+        <path d="M250 150 L150 350 L350 350 Z" style="fill:lightslategray;filter:url(#Gaussian_Blur);"></path>
+        <path d="M153 334
+                C153 334 151 334 151 334
+                C151 339 153 344 156 344
+                C164 344 171 339 171 334
+                C171 322 164 314 156 314
+                C142 314 131 322 131 334
+                C131 350 142 364 156 364
+                C175 364 191 350 191 334
+                C191 311 175 294 156 294
+                C131 294 111 311 111 334
+                C111 361 131 384 156 384
+                C186 384 211 361 211 334
+                C211 300 186 274 156 274"
+                style="fill:white;stroke:red;stroke-width:2"/>
+    </svg>
+</body>
+</html>
