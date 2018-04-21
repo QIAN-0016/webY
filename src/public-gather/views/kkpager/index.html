@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>kkpager</title>
+</head>
+<style type="text/css">
+/*分页*/
+.kkpager{clear:both;color:#999;padding:10px 0;font-size:13px; text-align:center;}
+.kkpager a{border:1px solid #aaa;display:inline-block;padding:3px 10px 3px 10px;margin-right:5px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;cursor:pointer;background:#fff;text-decoration:none;color:#999}
+.kkpager span.disabled{display:inline-block;padding:3px 10px 3px 10px;margin-right:5px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;border:1px solid #DFDFDF;background-color:#FFF;color:#DFDFDF}
+.kkpager span.curr{border:1px solid #ff4c4c;display:inline-block;padding:3px 10px 3px 10px;margin-right:5px;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;background:#ff4c4c;color:#fff;}
+.kkpager a:hover{border:1px solid #ff4c4c;background-color:#fff;color:#ff4c4c}
+.kkpager span.spanDot{ margin-right:5px;}
+</style>
+<body>
+<div class="kkpager" id="kkpager1"></div>
+<div class="kkpager" id="kkpager2"></div>
+<script src="../../static/js/jquery.js"></script>
+<script src="../../static/js/kkpager.min.js"></script>
+<script type="text/javascript">
+
+var pageNo = 1;//当前页的页码
+var totalPage = 4;//总的页数
+var totalRecords = 26;//总数据条数
+
+// $("#kkpager1").KingPaging({
+// 	pagerid: "kkpager1",
+// 	mode :"click",
+//     pno : pageNo,
+//     total : totalPage,
+//     totalRecords : totalRecords,
+//     isShowTotalPage:false,
+//     isShowCurrPage:false,
+//     isGoPage:false,
+//     isShowFirstPageBtn:false,
+//     isShowLastPageBtn:false,
+//     click : function(n){
+//         //这里可以做自已的处理
+// 		//...
+// 		//处理完后可以手动条用selectPage进行页码选中切换
+// 		this.selectPage(n);
+//     },
+//     lang:{
+//         prePageText:'<',
+//         nextPageText:">"
+//     }
+// })
+// $("#kkpager2").KingPaging({
+// 	pagerid: "kkpager1",
+// 	mode :"click",
+//     pno : pageNo,
+//     total : totalPage,
+//     totalRecords : totalRecords,
+//     isShowTotalPage:false,
+//     isShowCurrPage:false,
+//     isGoPage:false,
+//     isShowFirstPageBtn:false,
+//     isShowLastPageBtn:false,
+//     click : function(n){
+//         //这里可以做自已的处理
+// 		//...
+// 		//处理完后可以手动条用selectPage进行页码选中切换
+// 		this.selectPage(n);
+//     },
+//     lang:{
+//         prePageText:'<',
+//         nextPageText:">"
+//     }
+// })
+
+kkpager.generPageHtml({
+	pagerid: "kkpager2",
+	mode :"click",
+    pno : pageNo,
+    total : totalPage,
+    totalRecords : totalRecords,
+    isShowTotalPage:false,
+    isShowCurrPage:false,
+    isGoPage:false,
+    isShowFirstPageBtn:false,
+    isShowLastPageBtn:false,
+    click : function(n){
+        //这里可以做自已的处理
+		//...
+		//处理完后可以手动条用selectPage进行页码选中切换
+		this.selectPage(n);
+    },
+    lang:{
+        prePageText:'<',
+        nextPageText:">"
+    }
+});
+
+
+</script>
+</body>
+</html>
