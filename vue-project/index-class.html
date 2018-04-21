@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style type="text/css">
+        a,h1,h2,h3,h4,h5,h6,p,div,ul,li{padding:0;margin:0;font-size:14px;}
+        .active{width:100%;background-color: #ddd;}
+        .textdanger{color:#e96900;;}
+        .bggray{background-color: #f8f8f8;}
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div :class="{active:isActive,textdanger:hasError}">classObject</div>
+    <div :class="classObject">classObject</div>
+    <div :class="[isActive?bgGray:'', textDanger]">[bggray, textdanger]</div>
+    <div v-bind:style="styleObj">styleObj</div>
+
+    <slide class="active" v-bind:class="{textdanger:hasError}"></slide>
+
+
+    <input type="button" value="btn" v-on:click="isActiveChange">
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    Vue.component("slide",{
+        template:'<p class="foo bar">Hi</p>'
+    })
+
+    var app=new Vue({
+        el: '#app',
+        data: {
+            message:"active css",
+            isActive: true,
+            hasError: true,
+            error:null,
+            bgGray:"bggray",
+            textDanger:"textdanger",
+            styleObj:{
+                color:"red",
+                fontSize:"16px"
+            }
+        },
+        methods:{
+            isActiveChange:function(){
+                this.isActive = this.isActive==true?false:true;
+            }
+        },
+        computed:{
+            classObject:function(){
+                return {
+                    active:this.isActive && !this.error,
+                    "textdanger":this.error && this.error.type === "fatal"
+                }
+            }
+        }
+    })
+    
+</script>
+</body>
+</html>

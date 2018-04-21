@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style type="text/css">
+        a,h1,h2,h3,h4,h5,h6,p,div,ul,li{padding:0;margin:0;font-size:14px;}
+        .active{width:100%;background-color: #ddd;}
+        .textdanger{color:#e96900;;}
+        .bggray{background-color: #f8f8f8;}
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="ok">Yes</h1>
+    <h1 v-else>No</h1>
+
+    <template v-if="ok">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+    </template>
+    <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email" key="email-input">
+    </template>
+    <div v-show="ok">v-show</div>
+
+    <br><input type="button" value="btn" v-on:click="isActiveChange">
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+
+    var app=new Vue({
+        el: '#app',
+        data:{
+            ok:true
+        },
+        methods:{
+            isActiveChange:function(){
+                this.ok= this.ok==true?false:true;
+            }
+        }
+        
+    })
+    
+</script>
+</body>
+</html>

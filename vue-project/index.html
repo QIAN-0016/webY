@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue</title>
+    <style type="text/css">
+        a,h1,h2,h3,h4,h5,h6,p,div,ul,li{padding:0;margin:0;font-size:14px;}
+    </style>
+</head>
+<body>
+<div id="app">
+    <h1 v-once>{{message}}</h1>
+    <p v-bind:title="localestr">
+        {{titletxt}}
+    </p>
+    <p v-if="show">是否显示</p>
+    <ul>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ul>
+    <input type="button" v-on:click="changeMessage" value="changeMessage">
+    <input type="text" v-model="message">
+    <ol>
+        <todo-item v-for="item in todos" v-bind:todod="item"></todo-item>
+    </ol>
+    <p>email:{{emailHtml}}</p>
+    <p>email:<span v-html="emailHtml"></span></p>
+    <p>{{fullName}}</p>
+    <input type="button" v-on:click="changeName" value="changeName">
+    <input type="button" @click="changefullName" value="changefullName">
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+    Vue.component("todo-item",{
+        props:["todod"],
+        template:'<li>{{todod.text}}</li>'
+    })
+
+    var app=new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Vue!",
+            titletxt:"鼠标悬停",
+            localestr:"页面加载于" + new Date().toLocaleString(),
+            show:true,
+            todos:[
+                {id:1,text:'1111'},
+                {id:2,text:"2222"},
+                {id:3,text:"3333"}
+            ],
+            emailHtml:'<span style="color:red;">333@33.com</span>',
+            firstName:"foo",
+            lastName:"bar"
+        },
+        methods:{
+            changeMessage:function(){
+                this.message=this.localestr.split("").reverse().join("")
+            },
+            nameChanged:function(){
+                return Date.now()
+            },
+            changeName:function(){
+                this.firstName="fee"
+            },
+            changefullName:function(){
+                this.fullName="john Doe"
+            }
+        },
+        computed:{
+            nameChange:function(){
+                return this.message
+            },
+            fullName:{
+                get:function(){
+                    return this.firstName+" "+this.lastName
+                },
+                set:function(newVal){
+                    var names=newVal.split(" ")
+                    this.firstName=names[0]
+                    this.lastName=names[1]
+                }
+            }
+        },
+        created:function(){
+            console.log("message:"+this.message)
+        }
+    })
+    
+
+
+
+
+
+
+</script>
+</body>
+</html>
